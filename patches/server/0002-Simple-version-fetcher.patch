@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: femboyPig <60929459+femboyPig@users.noreply.github.com>
+Date: Thu, 30 Mar 2023 09:34:56 +0300
+Subject: [PATCH] Simple version fetcher
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
+index 33ea5172bb7fe1018bc39acc16963f4998ac52b2..3f262804f1e2e1dbd7ae1b66c317f2a1aa6e2c3f 100644
+--- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
++++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
+@@ -462,7 +462,7 @@ public final class CraftMagicNumbers implements UnsafeValues {
+ 
+     @Override
+     public com.destroystokyo.paper.util.VersionFetcher getVersionFetcher() {
+-        return new com.destroystokyo.paper.PaperVersionFetcher(); // Pufferfish // Purpur
++        return new ru.femboypig.yellowknife.YellowKnifeVersionFetcher(); // Pufferfish // Purpur // YellowKnife
+     }
+ 
+     @Override
+diff --git a/src/main/java/ru/femboypig/yellowknife/YellowKnifeVersionFetcher.java b/src/main/java/ru/femboypig/yellowknife/YellowKnifeVersionFetcher.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..7dd13fdd42832120556dabd3b8086b30ae509d9b
+--- /dev/null
++++ b/src/main/java/ru/femboypig/yellowknife/YellowKnifeVersionFetcher.java
+@@ -0,0 +1,18 @@
++package ru.femboypig.yellowknife;
++
++import com.destroystokyo.paper.util.VersionFetcher;
++import net.kyori.adventure.text.Component;
++import net.kyori.adventure.text.format.NamedTextColor;
++import org.jetbrains.annotations.NotNull;
++
++public class YellowKnifeVersionFetcher implements VersionFetcher {
++    @Override
++    public long getCacheTime() {
++        return Long.MAX_VALUE;
++    }
++
++    @Override
++    public @NotNull Component getVersionMessage(@NotNull String serverVersion) {
++        return Component.text("YellowKnife: ").append(Component.text(serverVersion, NamedTextColor.GREEN));
++    }
++}

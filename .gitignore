@@ -1,0 +1,9 @@
+whitehorse-api
+whitehorse-server
+
+build/
+.gradle/
+
+.idea/
+
+run/
